@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/comment_microservice_db
+    username: root
+    password: 2002
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    # Enable JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
