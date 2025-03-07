@@ -1,6 +1,7 @@
 package com.suraj.comment_microservice.controller;
 
 import com.suraj.comment_microservice.payload.CommentDTO;
+import com.suraj.comment_microservice.payload.PagedResponse;
 import com.suraj.comment_microservice.service.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -25,14 +26,14 @@ public class CommentController {
     }
 
     @GetMapping("/post/{postId}")
-    public ResponseEntity<List<CommentDTO>> fetchCommentsByPost(
+    public ResponseEntity<PagedResponse<CommentDTO>> fetchCommentsByPost(
             @PathVariable UUID postId,
             Pageable pageable  // ✅ Spring automatically extracts ?page=0&size=10&sort=id,asc
     ) {
         return ResponseEntity.ok(commentService.fetchCommentsByPost(postId, pageable));
     }
 
-    //    @GetMapping("/posts/{postId}/comments")
+    //    @GetMapping("/posts/{postId}/")
 //    public ResponseEntity<List<CommentDTO>> getCommentsByPostId(
 //            @PathVariable UUID postId,
 //            @RequestParam( defaultValue = "0") int page,
